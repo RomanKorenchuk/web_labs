@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редагування банку</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Редагування банку</h1>
+        <nav>
+            <a href="index.html" class="nav-btn">На головну</a>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <form id="editBankForm">
+            <input type="hidden" id="editBankIndex">
+            
+            <div class="form-group">
+                <label for="editBankName">Назва банку:</label>
+                <input type="text" id="editBankName" name="bankName" required 
+                       minlength="2" maxlength="50"
+                       placeholder="Введіть назву банку">
+            </div>
+
+            <div class="form-group">
+                <label for="editClientsCount">Кількість клієнтів:</label>
+                <input type="number" id="editClientsCount" name="clientsCount" required 
+                       min="0" max="100000000" step="1"
+                       placeholder="Введіть кількість клієнтів">
+            </div>
+
+            <div class="form-group">
+                <label for="editLoansCount">Кількість кредитів:</label>
+                <input type="number" id="editLoansCount" name="loansCount" required 
+                       min="0" max="100000000" step="1"
+                       placeholder="Введіть кількість кредитів">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Зберегти зміни</button>
+                <button type="button" class="btn-secondary" onclick="window.location.href='index.html'">Скасувати</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Модальне вікно для повідомлень -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle">Повідомлення</h3>
+            <p id="modalMessage"></p>
+            <button id="modalOk" class="btn-primary">OK</button>
+        </div>
+    </div>
+
+    <script src="bank.js"></script>
+    <script src="edit.js"></script>
+</body>
+</html>
