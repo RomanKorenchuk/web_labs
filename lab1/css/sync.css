@@ -1,0 +1,82 @@
+.sync-section {
+    padding: 0px 5%;
+    padding-top: 185px;
+}
+
+.sync-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.sync-image-container {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    z-index: 10;
+}
+
+.sync-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.sync-content h1 {
+    font-size: 34px;
+    max-width: 560px;
+    font-weight: 700;
+    line-height: 150%;
+    color: #222222;
+    margin-top: 20px;
+}
+
+.sync-content p {
+    font-size: 18px;
+    max-width: 460px;
+    font-weight: 300;
+    line-height: 150%;
+    color: #73738D;
+    margin-top: 20px;
+}
+
+.sync-features {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.feature-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.feature-item .checkmark {
+    color: #26C296;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+.feature-text p {
+    font-size: 14px;
+    color: #73738D;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
+}
