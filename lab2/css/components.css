@@ -1,0 +1,166 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    margin-left: 50px;
+    margin-top: 80px;
+}
+
+
+.anxiety-section .image-container {
+    position: relative;
+    display: block;
+    margin: 40px 0 40px 80px;
+    text-align: center;
+    width: 100%;
+}
+
+.anxiety-section .rectangle {
+    width: 80px;
+    display: inline-block;
+}
+
+.anxiety-section .smth {
+    width: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    z-index: 2;
+}
+
+.trial {
+    display: flex;
+    border: 2px solid transparent;
+    max-width: 1000px;
+    margin: 40px auto;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.trial h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.4;
+    margin: 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.trial_button {
+    padding: 10px;
+    background-color: #fff;
+}
+
+.trial_button a {
+    display: inline-block;
+    background-color: #26C296;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 40px;
+    border-radius: 31px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.trial_button a:hover {
+    background-color: #21a47f;
+}
+
+.trial h1 .trial-sub {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #73738D;
+    background-color: #fff;
+}
+
+.styled-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card-info h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+}
+
+.card-role {
+    font-size: 14px;
+    font-weight: 400;
+    color: #73738D;
+    margin-top: 4px;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #73738D;
+    line-height: 1.4;
+}
+
+.detail-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.card-details .detail-item img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 0 !important;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.sync-section .contact-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card-info h2 {
+    font-size: 20px;
+    font-weight: 400;
+}

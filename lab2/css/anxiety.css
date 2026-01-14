@@ -1,0 +1,199 @@
+.anxiety-section {
+    font-family: 'Gilroy', sans-serif;
+    background-color: transparent;
+    padding: 40px 5%;
+}
+
+.anxiety-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.anxiety-container .anxiety-content {
+    flex: 1;
+    border: 2px transparent;
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    min-width: 300px;
+}
+
+.connection-content {
+    flex: 1;
+    background: transparent;
+    padding: 30px;
+    min-width: 300px;
+}
+
+.connection-content h2 {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.anxiety-p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;  
+}
+
+.anxiety-content {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.anxiety-content:hover {
+    transform: scale(1.05);
+}
+
+.anxiety-content h2 {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #222;
+}
+
+.people-count {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 13px;
+    color: #222222CC;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.anxiety-text {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 14px;
+    color: #73738DCC;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+.connection-text {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 17px;
+    color: #73738D;
+    line-height: 150%;
+    margin-bottom: 0;
+    font-weight: 300;
+    max-width: 100%;
+}
+
+.anxiety-section .image-container {
+    position: relative;
+    display: block;
+    margin: 40px 0 40px 80px;
+    text-align: center;
+    width: 100%;
+}
+
+.anxiety-section .rectangle {
+    width: 80px;
+    display: inline-block;
+}
+
+.anxiety-section .smth {
+    width: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 0;
+    background-color: transparent;
+}
+
+@media (max-width: 320px) {
+    .anxiety-section .image-container {
+        position: relative;
+        display: inline;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+    .anxiety-section .smth {
+        padding-bottom: 65px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .anxiety-section {
+        padding: 80px 8%;
+        max-width: 2400px;
+        margin: 0 auto;
+    }
+
+    .anxiety-container {
+        gap: 80px;
+        max-width: 2000px;
+    }
+
+    .anxiety-container .anxiety-content {
+        border-radius: 30px;
+        padding: 50px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        min-width: 500px;
+    }
+
+    .connection-content {
+        padding: 50px;
+        min-width: 500px;
+    }
+
+    .connection-content h2 {
+        font-size: 52px;
+        margin-bottom: 25px;
+    }
+
+    .anxiety-p {
+        margin-bottom: 25px;
+    }
+
+    .anxiety-content:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .anxiety-content h2 {
+        font-size: 38px;
+    }
+
+    .people-count {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .anxiety-text {
+        font-size: 22px;
+        line-height: 1.7;
+    }
+
+    .connection-text {
+        font-size: 26px;
+        line-height: 160%;
+    }
+
+    .anxiety-section .image-container {
+        margin: 80px 0 80px 160px;
+    }
+
+    .anxiety-section .rectangle {
+        width: 140px;
+    }
+
+    .anxiety-section .smth {
+        width: 80px;
+    }
+
+    .anxiety-p img {
+        width: 35px;
+        height: 10px;
+    }
+}

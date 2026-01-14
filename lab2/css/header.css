@@ -1,0 +1,250 @@
+header {
+    display: flex;
+    padding: 20px 5% 0;
+    font-family: 'Gilroy', sans-serif;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Logo */
+.logo p {
+    font-weight: 700;
+    font-size: 24px;
+    color: #222222;
+    margin-right: auto;
+    flex-shrink: 1;
+    min-width: 100px;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;  
+    margin: 0 20px;
+}
+
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    margin: 0;
+    flex-wrap: nowrap;
+    flex-shrink: 1;
+    min-width: 100px;
+    padding: 0;
+}
+
+.desktop-nav a, .login a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 11px;
+    color: #73738D;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.desktop-nav a {
+    padding: 0 15px;
+}
+
+.login a {
+    padding-left: 60px;
+}
+
+.desktop-nav li {
+    flex-shrink: 1;
+    min-width: 60px;
+}
+
+.desktop-nav a:hover, .login a:hover {
+    color: #1943EF;
+}
+
+/* TFF Button */
+.TFF {
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.TFF a {
+    background-color: transparent;
+    color: #1943EF;
+    border: 1px solid #1943EF;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 31px;
+    font-weight: 500;
+    transition: all 0.3s;
+    height: 43px;
+    display: inline-block;
+    flex-shrink: 0;
+    min-width: 120px;
+}
+
+.TFF a:hover {
+    background-color: #153acf;
+    color: azure;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #222222;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    padding: 80px 20px 20px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#menu-toggle:checked ~ .mobile-menu {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+
+.mobile-nav a {
+    font-size: 18px;
+    color: #222222;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    color: #1943EF;
+}
+
+.mobile-tff {
+    background-color: #1943EF;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 20px 0;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .desktop-nav, .login, .TFF {
+        display: none;
+    }
+    
+    .logo p {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .logo p {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 2560px) {
+    header {
+        padding: 40px 8% 0;
+        max-width: 2400px;
+        margin: 0 auto;
+    }
+
+    .logo p {
+        font-size: 42px;
+    }
+
+    .desktop-nav a, .login a {
+        font-size: 20px;
+    }
+
+    .desktop-nav a {
+        padding: 0 30px;
+    }
+
+    .login a {
+        padding-left: 100px;
+    }
+
+    .desktop-nav ul {
+        gap: 30px;
+    }
+
+    .TFF {
+        margin-left: 40px;
+    }
+
+    .TFF a {
+        padding: 20px 45px;
+        border-radius: 50px;
+        height: 70px;
+        min-width: 180px;
+        font-size: 20px;
+        border-width: 2px;
+    }
+
+    .hamburger {
+        display: none !important;
+    }
+}

@@ -1,0 +1,190 @@
+.reminder {
+    font-family: 'Gilroy', sans-serif;
+    display: flex;
+    gap: 40px;
+    padding-top: 100px;
+    max-width: 1300px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.reminder-left {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+}
+
+.reminder-card {
+    display: flex;
+    gap: 15px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 15px 20px;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reminder-card:hover {
+    transform: scale(1.1);
+}
+
+.reminder-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.reminder-card p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Gilroy', sans-serif;
+    color: #222222CC;
+    line-height: 1.5;
+}
+
+.follow a {
+    color: #26C296;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.reminder-right {
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+}
+
+.reminder-right h2 {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.reminder-right p {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #73738D;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.reminder-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.reminder-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reminder-list .checkmark {
+    color: #26C296;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.reminder-list .text {
+    color: #73738D;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+@media (max-width: 320px) {
+    .reminder-left {
+        min-width: 270px;
+    }
+    .reminder-card img {
+        width: 35px;
+        height: 35px;
+    }
+    .reminder-right h2 {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .reminder {
+        gap: 80px;
+        padding: 80px 8%;
+        max-width: 2400px;
+        margin: 0 auto;
+    }
+
+    .reminder-left {
+        gap: 30px;
+        min-width: 500px;
+    }
+
+    .reminder-card {
+        gap: 25px;
+        border-radius: 25px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        padding: 30px 35px;
+    }
+
+    .reminder-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+
+    .reminder-card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .reminder-card p {
+        font-size: 22px;
+    }
+
+    .follow a {
+        font-size: 20px;
+    }
+
+    .reminder-right {
+        min-width: 500px;
+    }
+
+    .reminder-right h2 {
+        font-size: 48px;
+        margin-bottom: 25px;
+    }
+
+    .reminder-right p {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .reminder-list {
+        gap: 20px 30px;
+    }
+
+    .reminder-list li {
+        gap: 15px;
+    }
+
+    .reminder-list .checkmark {
+        font-size: 22px;
+        min-width: 25px;
+    }
+
+    .reminder-list .text {
+        font-size: 20px;
+    }
+}
