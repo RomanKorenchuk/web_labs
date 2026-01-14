@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управління банками</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Управління банками</h1>
+    </header>
+    
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Пошук банку...">
+            <button id="searchBtn">Пошук</button>
+        </div>
+        
+        <div class="sort-options">
+            <label for="sortSelect">Сортувати за:</label>
+            <select id="sortSelect">
+                <option value="name">Назвою</option>
+                <option value="clients">Кількістю клієнтів</option>
+                <option value="loans">Кількістю кредитів</option>
+            </select>
+            <button id="sortBtn">Сортувати</button>
+        </div>
+    </div>
+    
+    <div class="stats">
+        <h3>Статистика</h3>
+        <p>Загальна кількість клієнтів: <span id="totalClients">0</span></p>
+        <p>Загальна кількість кредитів: <span id="totalLoans">0</span></p>
+    </div>
+    <div class="bank-list" id="bankList">
+    </div>
+    
+    <script src="bank.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
