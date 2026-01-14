@@ -1,0 +1,252 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import PrimaryButton from '../../components/UI/PrimaryButton/PrimaryButton';
+import SecondaryButton from '../../components/UI/SecondaryButton/SecondaryButton';
+import Select from '../../components/UI/Select/Select';
+import Spinner from '../../components/Spinner/Spinner';
+import { loanApi } from '../../api/apiService';
+import './Loans.css';
+
+const Loans = () => {
+  const dispatch = useDispatch();
+  const [loans, setLoans] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({
+    category: 'all',
+    sortBy: 'rate'
+  });
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchError, setSearchError] = useState(null);
+
+  // Завантаження всіх кредитів при першому рендері
+  useEffect(() => {
+    const fetchInitialLoans = async () => {
+      try {
+        setLoading(true);
+        const response = await loanApi.getAllLoans();
+        setLoans(response.data);
+        setSearchResults(response.data);
+        setSearchError(null);
+      } catch (error) {
+        console.error('Помилка завантаження:', error);
+        setSearchError('Не вдалося завантажити кредити. Спробуйте ще раз.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInitialLoans();
+  }, []);
+
+  // Функція пошуку кредитів
+  const searchLoans = async (searchParams) => {
+    try {
+      setIsSearching(true);
+      setSearchError(null);
+      const response = await loanApi.searchLoans(searchParams);
+      setSearchResults(response.data);
+    } catch (error) {
+      console.error('Помилка пошуку:', error);
+      setSearchError('Помилка пошуку. Спробуйте ще раз.');
+      setSearchResults([]);
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  // Обробка зміни пошукового запиту та фільтрів (МИТТЄВА)
+  useEffect(() => {
+    const isDefaultSettings = searchTerm.trim() === '' && filters.category === 'all' && filters.sortBy === 'rate';
+
+    if (isDefaultSettings) {
+      if (loans.length > 0) {
+        setSearchResults(loans);
+      }
+      return;
+    }
+
+    const params = {
+      ...(searchTerm.trim() && { q: searchTerm.trim() }),
+      ...(filters.category !== 'all' && { category: filters.category }),
+      sortBy: filters.sortBy
+    };
+
+    searchLoans(params);
+
+  }, [searchTerm, filters, loans]);
+
+  const handleFilterChange = (filterName, value) => {
+    setFilters(prev => ({
+      ...prev,
+      [filterName]: value
+    }));
+  };
+
+  const resetFilters = () => {
+    setSearchTerm('');
+    setFilters({
+      category: 'all',
+      sortBy: 'rate'
+    });
+    setSearchResults(loans);
+    setSearchError(null);
+  };
+
+  const handleAddToCart = (product) => {
+    const defaultBenefitType = 'standard';
+    const defaultBenefitLabel = 'Стандартні умови';
+    
+    const cartItemId = `${product.id}-${defaultBenefitType}`;
+
+    const productToAdd = {
+      ...product,
+      id: cartItemId, 
+      originalId: product.id, 
+      selectedBenefit: defaultBenefitLabel
+    };
+
+    dispatch(addToCart(productToAdd));
+    alert(`✅ Додано в кошик: ${product.name}\n🔖 Умови: ${defaultBenefitLabel}`);
+  };
+
+  const categories = [
+    { value: 'all', label: 'Всі кредити' },
+    { value: 'consumer', label: 'Споживчі кредити' },
+    { value: 'mortgage', label: 'Іпотечні кредити' },
+    { value: 'auto', label: 'Автокредити' },
+    { value: 'cards', label: 'Кредитні картки' },
+    { value: 'business', label: 'Бізнес-кредити' },
+    { value: 'agriculture', label: 'Агрокредити' },
+    { value: 'education', label: 'Освітні кредити' }
+  ];
+
+  const sortOptions = [
+    { value: 'rate', label: 'За процентною ставкою' },
+    { value: 'name', label: 'За назвою' },
+    { value: 'popularity', label: 'За популярністю' },
+    { value: 'amount', label: 'За сумою кредиту' }
+  ];
+
+  if (loading) {
+    return (
+      <div className="loans-page">
+        <div className="container">
+          <Spinner text="Завантаження кредитів..." />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="loans-page">
+      <div className="container">
+        <div className="page-header">
+          <div className="breadcrumb">
+            <Link to="/">Головна</Link> / <span>Кредитні пропозиції</span>
+          </div>
+          <h1>Пошук кредитних пропозицій</h1>
+          <p>Знайдено {searchResults.length} кредитів серед {loans.length} доступних</p>
+        </div>
+
+        <div className="search-section">
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="search-box">
+              <input
+                type="text"
+                placeholder="Пошук кредитів..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button type="submit" className="search-btn">
+                {isSearching ? '⏳' : '🔍'}
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div className="filters-bar">
+          <div className="filters-left">
+            <div className="filter-group">
+              <label>Тип кредиту:</label>
+              <Select 
+                options={categories}
+                value={filters.category}
+                onChange={(value) => handleFilterChange('category', value)}
+              />
+            </div>
+            <div className="filter-group">
+              <label>Сортування:</label>
+              <Select 
+                options={sortOptions}
+                value={filters.sortBy}
+                onChange={(value) => handleFilterChange('sortBy', value)}
+              />
+            </div>
+          </div>
+          <div className="filters-right">
+            <SecondaryButton onClick={resetFilters}>
+              Скинути фільтри
+            </SecondaryButton>
+          </div>
+        </div>
+
+        <div className="search-status">
+          {isSearching ? (
+            <div className="searching-indicator">
+              <span className="spinner-small"></span>
+              Пошук кредитів...
+            </div>
+          ) : searchError ? (
+            <div className="search-error">
+              ⚠️ {searchError}
+            </div>
+          ) : searchTerm || filters.category !== 'all' ? (
+            <p>
+              Результати пошуку: {searchResults.length} кредитів
+              {searchTerm && <> для "<strong>{searchTerm}</strong>"</>}
+            </p>
+          ) : (
+            <p>Всі доступні кредити</p>
+          )}
+        </div>
+
+        <div className="loans-content">
+          {searchResults.length > 0 ? (
+            <div className="products-grid">
+              {searchResults.map(product => (
+                <ProductCard 
+                  key={product.id}
+                  product={product}
+                  onDetailsClick={() => window.location.href = `/loan/${product.id}`}
+                  onApplyClick={() => handleAddToCart(product)}
+                />
+              ))}
+            </div>
+          ) : !isSearching && !searchError ? (
+            <div className="no-results">
+              <h3>Кредитів не знайдено</h3>
+              <p>Спробуйте змінити критерії пошуку або фільтрації</p>
+              <PrimaryButton onClick={resetFilters}>
+                Показати всі кредити
+              </PrimaryButton>
+            </div>
+          ) : null}
+        </div>
+
+        <div className="load-more-section">
+          <PrimaryButton onClick={() => console.log('Load more')}>
+            Завантажити ще кредити
+          </PrimaryButton>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default Loans;
